@@ -15,6 +15,8 @@
  */
 package com.github.ked4ma.android_jetpack_compose.navigation_sample.util
 
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Leaf
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.NavNode
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green200
@@ -36,4 +38,29 @@ object Const {
 
     const val NAV_ROOT = "ROOT"
     const val NAV_SAMPLE = "sample"
+
+    val ROOT_NODE = NavNode(NAV_ROOT, Green500 to Green200)
+
+    init {
+        // nav 1
+        run {
+            val nav = NavNode("nav1", Red500 to Red200)
+            nav.addChild(Leaf("A"))
+            nav.addChild(Leaf("B"))
+            nav.addChild(Leaf("C"))
+            ROOT_NODE.addChild(nav)
+        }
+        // nav 2
+        run {
+            ROOT_NODE.addChild(Leaf("D"))
+        }
+        // nav 3
+        run {
+            val nav = NavNode("nav3", Blue500 to Green200)
+            nav.addChild(Leaf("E"))
+            nav.addChild(Leaf("F"))
+            nav.addChild(Leaf("G"))
+            ROOT_NODE.addChild(nav)
+        }
+    }
 }

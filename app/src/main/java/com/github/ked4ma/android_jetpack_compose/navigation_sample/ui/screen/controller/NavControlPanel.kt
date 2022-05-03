@@ -155,6 +155,7 @@ private fun NavControlOptionPopUpTo(
             showDialog = true
         }
     ) {
+        // TODO: adjust design
         Text(text = "popUpTo: ${Const.DESTINATIONS.getOrNull(target) ?: "NONE"}")
     }
     if (showDialog) {
