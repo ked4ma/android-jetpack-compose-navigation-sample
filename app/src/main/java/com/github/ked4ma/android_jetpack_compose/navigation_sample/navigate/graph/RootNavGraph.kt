@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 ked4ma
+ * Copyright 2022 ked4ma
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.ked4ma.android_jetpack_compose_template.ui.screen
+package com.github.ked4ma.android_jetpack_compose.navigation_sample.navigate.graph
 
-import androidx.compose.runtime.Composable
-import com.github.ked4ma.android_jetpack_compose_template.ui.theme.AndroidjetpackcomposetemplateTheme
-import com.google.accompanist.insets.ProvideWindowInsets
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigation
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.util.Const
 
-@Composable
-fun JetpackComposeTemplateApp(content: @Composable () -> Unit) {
-    AndroidjetpackcomposetemplateTheme {
-        ProvideWindowInsets {
-            content()
-        }
+fun NavGraphBuilder.rootNavGraph(
+    navController: NavHostController,
+) {
+    navigation(
+        route = Const.NAV_ROOT,
+        startDestination = Const.NAV_SAMPLE
+    ) {
+        sampleNavGraph(navController)
     }
 }

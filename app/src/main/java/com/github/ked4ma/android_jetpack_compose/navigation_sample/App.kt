@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.ked4ma.android_jetpack_compose_template.ui.theme
+package com.github.ked4ma.android_jetpack_compose.navigation_sample
 
-// import androidx.compose.foundation.shape.RoundedCornerShape
-// import androidx.compose.material.Shapes
-// import androidx.compose.ui.unit.dp
-//
-// val Shapes = Shapes(
-//    small = RoundedCornerShape(4.dp),
-//    medium = RoundedCornerShape(4.dp),
-//    large = RoundedCornerShape(0.dp)
-// )
+import android.app.Application
+import com.google.android.material.color.DynamicColors
+
+class App : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        // https://m3.material.io/libraries/mdc-android/color-theming
+        DynamicColors.applyToActivitiesIfAvailable(this)
+    }
+}

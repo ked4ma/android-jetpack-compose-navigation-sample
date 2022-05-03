@@ -1,4 +1,4 @@
-# android-jetpack-compose-template
+# android-jetpack-compose-navigation-sample
 
 ## Dev Info
 ### Dependencies

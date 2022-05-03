@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.ked4ma.android_jetpack_compose_template
+package com.github.ked4ma.android_jetpack_compose.navigation_sample
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -32,6 +32,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.github.ked4ma.android_jetpack_compose_template", appContext.packageName)
+        assertEquals("com.github.ked4ma.android_jetpack_compose.navigation_sample", appContext.packageName)
     }
 }

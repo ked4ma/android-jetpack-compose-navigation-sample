@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.ked4ma.android_jetpack_compose_template.ui.theme
+package com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -49,7 +49,7 @@ private val LightColorScheme = lightColorScheme(
 
 @SuppressLint("NewApi")
 @Composable
-fun AndroidjetpackcomposetemplateTheme(
+fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

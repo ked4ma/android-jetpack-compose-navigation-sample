@@ -11,5 +11,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "android-jetpack-compose-template"
+rootProject.name = "android-jetpack-compose-navigation-sample"
 include(":app")

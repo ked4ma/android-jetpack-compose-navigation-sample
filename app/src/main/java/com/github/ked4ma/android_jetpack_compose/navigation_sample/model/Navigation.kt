@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 ked4ma
+ * Copyright 2022 ked4ma
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.ked4ma.android_jetpack_compose_template
+package com.github.ked4ma.android_jetpack_compose.navigation_sample.model
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
-}
+data class Navigation(
+    val dest: Int,
+    val popUpTo: Int,
+)

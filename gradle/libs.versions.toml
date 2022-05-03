@@ -11,6 +11,7 @@ androidx-compose = "1.1.1"
 androidx-material3 = "1.0.0-alpha10"
 androidx-activity = "1.4.0"
 androidx-lifecycle = "2.4.1"
+androidx-navigation = "2.4.2"
 
 compose-accompanist = "0.23.1"
 
@@ -32,12 +33,15 @@ androidx-compose-ui-main = { module = "androidx.compose.ui:ui", version.ref = "a
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
 androidx-compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx-compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "androidx-compose" }
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "androidx-compose" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidx-material3" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
 
 # Jetpack Compose (Accompanist)
 ## https://github.com/google/accompanist/
 compose-accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "compose-accompanist" }
+compose-accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "compose-accompanist" }
 ## https://coil-kt.github.io/coil/compose/
 compose-coil = { module = "io.coil-kt:coil-compose", version = "1.4.0" }
 
@@ -66,11 +70,14 @@ androidx-compose = [
     "androidx-compose-ui-main",
     "androidx-compose-ui-preview",
     # "androidx-compose-material",
+    "androidx-compose-material-icons-extended",
     "androidx-compose-material3",
-    "androidx-activity-compose"
+    "androidx-activity-compose",
+    "androidx-navigation-compose"
 ]
 compose-accompanist = [
     "compose-accompanist-insets",
+    "compose-accompanist-flowlayout",
     # coil is no longer a part of accompanist. but was a ex-part of it.
     "compose-coil"
 ]

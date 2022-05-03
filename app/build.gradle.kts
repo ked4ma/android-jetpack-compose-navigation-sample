@@ -8,7 +8,7 @@ android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "com.github.ked4ma.android_jetpack_compose_template"
+        applicationId = "com.github.ked4ma.android_jetpack_compose.navigation_sample"
         minSdk = 21
         targetSdk = 32
         versionCode = 1
