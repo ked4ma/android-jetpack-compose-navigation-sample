@@ -4,11 +4,12 @@ import androidx.compose.ui.graphics.Color
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Gray200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Gray500
 
-interface Node {
+sealed interface Node {
     val name: String
     val colors: Pair<Color, Color>
     fun flatten(): List<Node>
     fun setColor(colors: Pair<Color, Color>)
+    fun height(): Int
 }
 
 data class NavNode(
@@ -26,6 +27,7 @@ data class NavNode(
 
     override fun flatten(): List<Node> = listOf(this) + _children.flatMap { it.flatten() }
     override fun setColor(colors: Pair<Color, Color>) = Unit
+    override fun height(): Int = (_children.map(Node::height).maxOrNull() ?: 0) + 1
 }
 
 data class Leaf(
@@ -40,4 +42,6 @@ data class Leaf(
     override fun setColor(colors: Pair<Color, Color>) {
         _colors = colors
     }
+
+    override fun height(): Int = 1
 }

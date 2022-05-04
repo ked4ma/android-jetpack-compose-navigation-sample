@@ -33,11 +33,14 @@ fun NavGraphBuilder.appNavGraph(
                 NavSample(
                     title = node.name,
                     backStackEntries = backStackEntries,
-                    onNavigate = {
-                        // TODO: need to adjust
-                        navController.navigate(Const.DESTINATIONS[it.dest]) {
-                            if (it.popUpTo in Const.DESTINATIONS.indices) {
-                                popUpTo("${Const.NAV_SAMPLE}/${Const.DESTINATIONS[it.popUpTo]}")
+                    onNavigate = { nav ->
+                        navController.navigate(nav.dest.name) {
+                            launchSingleTop = nav.launchSingleTop
+                            nav.popUpTo?.let {
+                                popUpTo(it.name) {
+                                    inclusive = nav.popUpToInclusive
+                                    saveState = nav.popUpToSaveState
+                                }
                             }
                         }
                     }
