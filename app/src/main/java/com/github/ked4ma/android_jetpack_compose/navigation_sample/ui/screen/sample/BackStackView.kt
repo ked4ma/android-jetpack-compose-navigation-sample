@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.ComposeNavigator
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Node
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.util.Const
 
 @Composable
@@ -64,25 +65,21 @@ private fun BackStackEntryView(
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val destinations = entries.filter {
-            it.destination is ComposeNavigator.Destination
-        }.filter {
-            it.destination.route?.startsWith("sample/") ?: false
-        }.map {
-            it.destination
+        val nodes = entries.mapNotNull {
+            val route = it.destination.route ?: return@mapNotNull null
+            Const.NODE_MAP.getValue(route)
         }.asReversed()
         Text(
             modifier = Modifier.padding(bottom = 4.dp),
             text = "Back Stack Entry",
             fontSize = 22.sp
         )
-        destinations.forEachIndexed { index, dest ->
-            val d = dest.route!!.removePrefix("sample/")
+        nodes.forEachIndexed { index, node ->
             BackStackItem(
                 modifier = Modifier.fillMaxWidth(),
-                dest = d
+                node = node
             )
-            if (index < destinations.lastIndex) {
+            if (index < nodes.lastIndex) {
                 Icon(imageVector = Icons.Filled.ArrowUpward, contentDescription = null)
             }
         }
@@ -92,19 +89,19 @@ private fun BackStackEntryView(
 @Composable
 private fun BackStackItem(
     modifier: Modifier = Modifier,
-    dest: String
+    node: Node,
 ) {
     Box(
         modifier = modifier
             .background(
                 shape = RoundedCornerShape(100),
-                color = Const.DESTINATION_COLORS[Const.DESTINATION_LOOKUP.getValue(dest)].first
+                color = node.colors.first
             )
             .padding(horizontal = 8.dp, vertical = 2.dp)
     ) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = dest,
+            text = node.name,
             color = MaterialTheme.colorScheme.onPrimary,
             fontSize = 24.sp
         )

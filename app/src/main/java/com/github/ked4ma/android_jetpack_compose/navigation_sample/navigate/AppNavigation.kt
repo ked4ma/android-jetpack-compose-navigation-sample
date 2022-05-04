@@ -20,7 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.github.ked4ma.android_jetpack_compose.navigation_sample.navigate.graph.rootNavGraph
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.navigate.graph.appNavGraph
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.util.Const
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -34,6 +34,6 @@ fun AppNavigation(
         startDestination = Const.NAV_ROOT,
         modifier = modifier
     ) {
-        rootNavGraph(navController)
+        appNavGraph(navController = navController)
     }
 }
