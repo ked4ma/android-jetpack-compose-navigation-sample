@@ -1,5 +1,25 @@
 # android-jetpack-compose-navigation-sample
 
+## :scroll: Description
+This is a sample app try to use options for Jetpack Compose Navigation.
+
+## :bulb: Motivation and Context
+When use Jetpack Compose Navigation, there were difficulty to understand each option's behavior.<br>
+To help checking this, I created this app.
+
+## :factory: supported functions
+- [x] navigate
+  - [x] launchSingleTop
+  - [x] popUpTo
+    - [x] inclusive
+    - [x] saveState
+  - [x] restoreState
+- [ ] popBackStack
+
+## :camera_flash: Screenshots
+<!-- You can add more screenshots here if you like -->
+<img src="/screenshots/image1.png" width="260">&emsp;<img src="/screenshots/image2.png" width="260">
+
 ## Dev Info
 ### Dependencies
 This project using [Version Catalog](https://docs.gradle.org/7.2/userguide/platforms.html#sub:central-declaration-of-dependencies).
