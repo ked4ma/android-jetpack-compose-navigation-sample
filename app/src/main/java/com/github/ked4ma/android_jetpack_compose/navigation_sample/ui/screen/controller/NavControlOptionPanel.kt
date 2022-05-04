@@ -174,11 +174,11 @@ private fun PopUpToDialog(
 ) {
     var dest by remember { mutableStateOf(initialDest) }
     var inclusive by remember { mutableStateOf(initialInclusive) }
-    var saveStable by remember { mutableStateOf(initialSaveState) }
+    var saveState by remember { mutableStateOf(initialSaveState) }
     AlertDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
-            Button(onClick = { onSelect(Triple(dest, inclusive, saveStable)) }) {
+            Button(onClick = { onSelect(Triple(dest, inclusive, saveState)) }) {
                 Text(text = "OK")
             }
         },
@@ -204,14 +204,14 @@ private fun PopUpToDialog(
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(
-                        checked = saveStable,
-                        onCheckedChange = { saveStable = it }
+                        checked = saveState,
+                        onCheckedChange = { saveState = it }
                     )
                     Text(
                         modifier = Modifier.clickable {
-                            saveStable = !saveStable
+                            saveState = !saveState
                         },
-                        text = "saveStable"
+                        text = "saveState"
                     )
                 }
             }
