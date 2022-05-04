@@ -20,6 +20,8 @@ import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.NavNode
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Node
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue500
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Gray200
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Gray500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Red200
@@ -32,6 +34,7 @@ object Const {
     val NODE_MAP: Map<String, Node>
     val NODE_HEIGHT: Int
     val NODES_FOR_DEPTH: List<List<List<Node>>>
+    val UNKNOWN_NODE = Leaf("UNKNOWN").apply { setColor(Gray500 to Gray200) }
 
     init {
         // nav 1
@@ -56,15 +59,16 @@ object Const {
 
         NODE_MAP = ROOT_NODE.flatten().associateBy(Node::name)
         NODE_HEIGHT = ROOT_NODE.height()
-        NODES_FOR_DEPTH = (1 until NODE_HEIGHT).runningFold(listOf(listOf<Node>(ROOT_NODE))) { acc, _ ->
-            acc.map { nodes ->
-                nodes.mapNotNull {
-                    when (it) {
-                        is Leaf -> null
-                        is NavNode -> it.children
+        NODES_FOR_DEPTH =
+            (1 until NODE_HEIGHT).runningFold(listOf(listOf<Node>(ROOT_NODE))) { acc, _ ->
+                acc.map { nodes ->
+                    nodes.mapNotNull {
+                        when (it) {
+                            is Leaf -> null
+                            is NavNode -> it.children
+                        }
                     }
-                }
-            }.flatten()
-        }
+                }.flatten()
+            }
     }
 }

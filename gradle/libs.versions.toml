@@ -27,6 +27,8 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 android-material = { module = "com.google.android.material:material", version.ref = "material" }
 
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
 # Jetpack Compose
 androidx-compose-ui-main = { module = "androidx.compose.ui:ui", version.ref = "androidx-compose" }
 ## tooling will be imported for only debug (debugImplementation in build.gradle)

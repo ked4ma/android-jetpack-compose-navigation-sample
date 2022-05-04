@@ -22,7 +22,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.navigate.AppNavigation
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.screen.ThemedApp
@@ -43,9 +42,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppContent() {
     val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-//    val currentScreen = navBackStackEntry?.destination?.route?.let(Screen::destinationOf)
-//        ?: Screen.AlbumList
 
     Surface(
         modifier = Modifier

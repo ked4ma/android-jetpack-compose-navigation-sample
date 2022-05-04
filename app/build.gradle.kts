@@ -66,6 +66,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.kotlin.reflect)
     // https://developer.android.com/studio/releases/gradle-plugin#j8-library-desugaring
     coreLibraryDesugaring(libs.tools.desugar.jdk)
 

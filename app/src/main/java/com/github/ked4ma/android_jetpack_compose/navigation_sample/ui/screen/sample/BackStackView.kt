@@ -16,9 +16,11 @@
 package com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.screen.sample
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -36,12 +38,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavBackStackEntry
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Node
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Gray200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.util.Const
 
 @Composable
 fun BackStackView(
     modifier: Modifier = Modifier,
-    entries: List<NavBackStackEntry>
+    entries: List<NavBackStackEntry>,
+    states: Map<String, List<Node>>
 ) {
     Row(modifier = modifier.fillMaxWidth()) {
         // back stacks
@@ -49,8 +53,11 @@ fun BackStackView(
             modifier = Modifier.weight(0.5F),
             entries = entries
         )
-        // saved?
-        // TODO: consider how to impl
+        // saved
+        BackStackStateView(
+            modifier = Modifier.weight(0.5F),
+            states = states
+        )
     }
 }
 
@@ -60,26 +67,78 @@ private fun BackStackEntryView(
     entries: List<NavBackStackEntry>
 ) {
     Column(
-        modifier = modifier
-            .verticalScroll(rememberScrollState()),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(
+            modifier = Modifier.padding(bottom = 4.dp),
+            text = "Back Stack Entry",
+            fontSize = 20.sp
+        )
         val nodes = entries.mapNotNull {
             val route = it.destination.route ?: return@mapNotNull null
             Const.NODE_MAP.getValue(route)
         }.asReversed()
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .verticalScroll(rememberScrollState())
+                .padding(top = 2.dp, end = 4.dp)
+                .border(4.dp, Gray200, RoundedCornerShape(16.dp))
+                .padding(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            nodes.forEachIndexed { index, node ->
+                BackStackItem(
+                    modifier = Modifier.fillMaxWidth(),
+                    node = node
+                )
+                if (index < nodes.lastIndex) {
+                    Icon(imageVector = Icons.Filled.ArrowUpward, contentDescription = null)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun BackStackStateView(
+    modifier: Modifier = Modifier,
+    states: Map<String, List<Node>>
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(
             modifier = Modifier.padding(bottom = 4.dp),
-            text = "Back Stack Entry",
-            fontSize = 22.sp
+            text = "Saved State",
+            fontSize = 20.sp
         )
-        nodes.forEachIndexed { index, node ->
-            BackStackItem(
-                modifier = Modifier.fillMaxWidth(),
-                node = node
-            )
-            if (index < nodes.lastIndex) {
-                Icon(imageVector = Icons.Filled.ArrowUpward, contentDescription = null)
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            states.toSortedMap().forEach { (_, nodes) ->
+                Column(
+                    modifier = Modifier
+                        .padding(top = 2.dp, end = 4.dp)
+                        .border(4.dp, Gray200, RoundedCornerShape(16.dp))
+                        .padding(8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    nodes.forEachIndexed { index, node ->
+                        BackStackItem(
+                            modifier = Modifier.fillMaxWidth(),
+                            node = node
+                        )
+                        if (index < nodes.lastIndex) {
+                            Icon(imageVector = Icons.Filled.ArrowUpward, contentDescription = null)
+                        }
+                    }
+                }
             }
         }
     }
@@ -102,7 +161,7 @@ private fun BackStackItem(
             modifier = Modifier.align(Alignment.Center),
             text = node.name,
             color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = 24.sp
+            fontSize = 20.sp
         )
     }
 }

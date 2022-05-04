@@ -18,6 +18,7 @@ package com.github.ked4ma.android_jetpack_compose.navigation_sample.model
 data class Navigation(
     val dest: Node,
     val launchSingleTop: Boolean,
+    val restoreState: Boolean,
     val popUpTo: Node?,
     val popUpToInclusive: Boolean,
     val popUpToSaveState: Boolean,
