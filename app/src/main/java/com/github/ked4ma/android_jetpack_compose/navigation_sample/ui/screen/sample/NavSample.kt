@@ -52,7 +52,7 @@ fun NavSample(
 
         NavControlPanel(
             modifier = Modifier,
-            initialDest = Const.DESTINATION_LOOKUP.getValue(title),
+            initialDest = Const.NODE_MAP.getValue(title),
             onNavigate = onNavigate
         )
     }

@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.navigate.AppNavigation
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.screen.ThemedApp
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 
@@ -32,7 +33,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AppContent()
+            ThemedApp {
+                AppContent()
+            }
         }
     }
 }

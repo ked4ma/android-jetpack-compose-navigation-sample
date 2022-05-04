@@ -35,7 +35,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.compose.ComposeNavigator
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Node
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.util.Const
 

@@ -22,26 +22,16 @@ import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green500
-import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Orange200
-import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Orange500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Red200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Red500
 
 object Const {
-    val DESTINATIONS = listOf("A", "B", "C", "D")
-    val DESTINATION_LOOKUP = DESTINATIONS.withIndex().associate { it.value to it.index }
-    val DESTINATION_COLORS = listOf(
-        Red500 to Red200,
-        Green500 to Green200,
-        Blue500 to Blue200,
-        Orange500 to Orange200
-    )
-
     const val NAV_ROOT = "ROOT"
-    const val NAV_SAMPLE = "sample"
 
     val ROOT_NODE = NavNode(NAV_ROOT, Green500 to Green200)
     val NODE_MAP: Map<String, Node>
+    val NODE_HEIGHT: Int
+    val NODES_FOR_DEPTH: List<List<List<Node>>>
 
     init {
         // nav 1
@@ -52,13 +42,12 @@ object Const {
             nav.addChild(Leaf("C"))
             ROOT_NODE.addChild(nav)
         }
-        // nav 2
         run {
             ROOT_NODE.addChild(Leaf("D"))
         }
-        // nav 3
+        // nav 2
         run {
-            val nav = NavNode("nav3", Blue500 to Green200)
+            val nav = NavNode("nav2", Blue500 to Blue200)
             nav.addChild(Leaf("E"))
             nav.addChild(Leaf("F"))
             nav.addChild(Leaf("G"))
@@ -66,5 +55,16 @@ object Const {
         }
 
         NODE_MAP = ROOT_NODE.flatten().associateBy(Node::name)
+        NODE_HEIGHT = ROOT_NODE.height()
+        NODES_FOR_DEPTH = (1 until NODE_HEIGHT).runningFold(listOf(listOf<Node>(ROOT_NODE))) { acc, _ ->
+            acc.map { nodes ->
+                nodes.mapNotNull {
+                    when (it) {
+                        is Leaf -> null
+                        is NavNode -> it.children
+                    }
+                }
+            }.flatten()
+        }
     }
 }
