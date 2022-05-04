@@ -77,6 +77,7 @@ fun NavControlPanel(
                             Navigation(
                                 dest,
                                 optionState.launchSingleTop,
+                                optionState.restoreState,
                                 optionState.popUpTo.to,
                                 optionState.popUpTo.inclusive,
                                 optionState.popUpTo.saveState

@@ -51,7 +51,11 @@ fun NavControlOptionPanel(
     optionState: NavControlOption = rememberNavControlOptionState(),
 ) {
     Column(modifier = Modifier.padding(horizontal = 8.dp)) {
-        NavControlOptionLaunchSingleTop(optionState)
+        Row {
+            NavControlOptionLaunchSingleTop(optionState)
+            NavControlOptionRestoreState(optionState)
+        }
+
         NavControlOptionPopUpTo(optionState.popUpTo)
     }
 }
@@ -73,6 +77,27 @@ private fun NavControlOptionLaunchSingleTop(
                 optionState.launchSingleTop = !optionState.launchSingleTop
             },
             text = "launchSingleTop"
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun NavControlOptionRestoreState(
+    optionState: NavControlOption,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Checkbox(
+            checked = optionState.restoreState,
+            onCheckedChange = {
+                optionState.restoreState = it
+            }
+        )
+        Text(
+            modifier = Modifier.clickable {
+                optionState.restoreState = !optionState.restoreState
+            },
+            text = "restoreState"
         )
     }
 }
@@ -198,6 +223,7 @@ private fun PopUpToDialog(
 @Stable
 class NavControlOption {
     var launchSingleTop by mutableStateOf(false)
+    var restoreState by mutableStateOf(false)
     val popUpTo = PopUpToOption()
 }
 

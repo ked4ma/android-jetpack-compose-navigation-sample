@@ -16,6 +16,7 @@
 package com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.screen.sample
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -26,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Navigation
+import com.github.ked4ma.android_jetpack_compose.navigation_sample.model.Node
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.screen.controller.NavControlPanel
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.util.Const
 
@@ -34,6 +36,7 @@ fun NavSample(
     modifier: Modifier = Modifier,
     title: String,
     backStackEntries: List<NavBackStackEntry>,
+    backStackStates: Map<String, List<Node>>,
     onNavigate: (Navigation) -> Unit
 ) {
     Column(modifier = modifier.fillMaxSize()) {
@@ -45,9 +48,11 @@ fun NavSample(
 
         BackStackView(
             modifier = Modifier
+                .fillMaxHeight()
                 .weight(1F)
                 .padding(16.dp),
-            entries = backStackEntries
+            entries = backStackEntries,
+            states = backStackStates
         )
 
         NavControlPanel(
