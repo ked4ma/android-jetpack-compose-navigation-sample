@@ -87,7 +87,6 @@ private fun NavControlOptionPopUpTo(
             showDialog = true
         }
     ) {
-        // TODO: adjust design
         Text(text = "popUpTo: ")
         if (popUpTo.to == null) {
             Text(text = "NONE")

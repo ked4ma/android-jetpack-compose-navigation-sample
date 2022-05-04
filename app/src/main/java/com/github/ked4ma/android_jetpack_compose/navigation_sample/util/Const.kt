@@ -22,20 +22,10 @@ import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Blue500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Green500
-import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Orange200
-import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Orange500
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Red200
 import com.github.ked4ma.android_jetpack_compose.navigation_sample.ui.theme.Red500
 
 object Const {
-    val DESTINATIONS = listOf("A", "B", "C", "D")
-    val DESTINATION_COLORS = listOf(
-        Red500 to Red200,
-        Green500 to Green200,
-        Blue500 to Blue200,
-        Orange500 to Orange200
-    )
-
     const val NAV_ROOT = "ROOT"
 
     val ROOT_NODE = NavNode(NAV_ROOT, Green500 to Green200)
